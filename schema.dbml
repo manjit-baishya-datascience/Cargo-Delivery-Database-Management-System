@@ -1,0 +1,82 @@
+Table Customers {
+    CustomerID INTEGER [primary key]
+    Name TEXT [not null]
+    Address TEXT [not null]
+    State TEXT [not null]
+    PIN INT [not null]
+    ContactNumber TEXT [not null]
+}
+
+Table Sellers {
+    SellerID INTEGER [primary key]
+    Name TEXT [not null]
+    Address TEXT [not null]
+    State TEXT [not null]
+    PIN TEXT [not null]
+    ContactNumber TEXT [not null]
+}
+
+Table Hubs {
+    HubID INTEGER [primary key]
+    Location TEXT [not null]
+    State TEXT [not null]
+    PIN INT [not null]
+    Capacity INTEGER [not null]
+    ContactNumber TEXT [not null]
+}
+
+Table Routes {
+    RouteID INTEGER [primary key]
+    DeparturePoint TEXT [not null]
+    DestinationPoint TEXT [not null]
+    Mode TEXT [not null]
+    EDA TEXT [not null]
+}
+
+Table DeliveryPersons {
+    DeliveryPersonID INTEGER [primary key]
+    Name TEXT [not null]
+    ContactNumber TEXT [not null]
+    Address TEXT [not null]
+    HubID INTEGER [ref: > Hubs.HubID]
+}
+
+Table Staff {
+    StaffID INTEGER [primary key]
+    Name TEXT
+    Address TEXT
+    ContactNumber TEXT
+    HubID INTEGER [ref: > Hubs.HubID]
+}
+
+Table Managers {
+    ManagerID INTEGER [primary key]
+    Name TEXT [not null]
+    Address TEXT [not null]
+    ContactNumber TEXT [not null]
+    HubID INTEGER [ref: > Hubs.HubID]
+}
+
+Table Buyers {
+    BuyerID INTEGER [primary key]
+    Name TEXT [not null]
+    Address TEXT [not null]
+    ContactNumber TEXT [not null]
+}
+
+Table Parcels {
+    ParcelID INTEGER [primary key]
+    CustomerID INTEGER [ref: > Customers.CustomerID]
+    SellerID INTEGER [ref: > Sellers.SellerID]
+    SourceHubID INTEGER [ref: > Hubs.HubID]
+    DestinationHubID INTEGER [ref: > Hubs.HubID]
+    BuyerID INT [ref: > Buyers.BuyerID]
+    TrackingNumber TEXT
+    RouteID INT [ref: > Routes.RouteID]
+    Size TEXT [not null]
+    Weight INT [not null]
+    Destination TEXT [not null]
+    Status TEXT [not null]
+    OrderDate DATE [not null]
+    DeliveryDate DATE [not null]
+}
