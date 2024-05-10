@@ -1,4 +1,4 @@
-CREATE TABLE Parcels (
+CREATE TABLE IF NOT EXISTS Parcels (
     ParcelID INTEGER PRIMARY KEY,
     TrackingNumber TEXT,
     Size TEXT,
@@ -18,7 +18,7 @@ CREATE TABLE Parcels (
     FOREIGN KEY (DestinationHubID) REFERENCES Hubs(HubID)
 );
 
-CREATE TABLE Customers (
+CREATE TABLE IF NOT EXISTS Customers (
     CustomerID INTEGER PRIMARY KEY,
     Name TEXT,
     Address TEXT,
@@ -27,7 +27,7 @@ CREATE TABLE Customers (
     ContactNumber TEXT
 );
 
-CREATE TABLE Sellers (
+CREATE TABLE IF NOT EXISTS Sellers (
     SellerID INTEGER PRIMARY KEY,
     Name TEXT,
     Address TEXT,
@@ -36,7 +36,7 @@ CREATE TABLE Sellers (
     ContactNumber TEXT
 );
 
-CREATE TABLE Hubs (
+CREATE TABLE IF NOT EXISTS Hubs (
     HubID INTEGER PRIMARY KEY,
     Location TEXT,
     State TEXT,
@@ -45,7 +45,7 @@ CREATE TABLE Hubs (
     ContactNumber TEXT
 );
 
-CREATE TABLE Routes (
+CREATE TABLE IF NOT EXISTS Routes (
     RouteID INTEGER PRIMARY KEY,
     DeparturePoint TEXT,
     DestinationPoint TEXT,
@@ -53,7 +53,7 @@ CREATE TABLE Routes (
     EDA TEXT
 );
 
-CREATE TABLE DeliveryPersons (
+CREATE TABLE IF NOT EXISTS DeliveryPersons (
     DeliveryPersonID INTEGER PRIMARY KEY,
     Name TEXT,
     ContactNumber TEXT,
@@ -63,7 +63,7 @@ CREATE TABLE DeliveryPersons (
     FOREIGN KEY (HubID) REFERENCES Hubs(HubID)
 );
 
-CREATE TABLE Staff (
+CREATE TABLE IF NOT EXISTS Staff (
     StaffID INTEGER PRIMARY KEY,
     Name TEXT,
     Address TEXT,
@@ -73,7 +73,7 @@ CREATE TABLE Staff (
     FOREIGN KEY (HubID) REFERENCES Hubs(HubID)
 );
 
-CREATE TABLE Managers (
+CREATE TABLE IF NOT EXISTS Managers (
     ManagerID INTEGER PRIMARY KEY,
     Name TEXT,
     Address TEXT,
@@ -83,7 +83,7 @@ CREATE TABLE Managers (
     FOREIGN KEY (HubID) REFERENCES Hubs(HubID)
 );
 
-CREATE TABLE Buyers (
+CREATE TABLE IF NOT EXISTS Buyers (
     BuyerID INTEGER PRIMARY KEY,
     Name TEXT,
     Address TEXT,
